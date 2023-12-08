@@ -1,5 +1,6 @@
 on:
-  schedule: '30 10 * * *'
+  schedule:
+    -cron: '30 10 * * *'
 
 name: "post naturalist_bot toot"
 
