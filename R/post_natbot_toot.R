@@ -2,7 +2,7 @@
 ##' @param obs A one-row data frame with the iNaturalist information
 ##' @param scheduled_at Specify date/time for posting the toot
 ##' @export
-post_natbot_toot <- function(obs, scheduled_at = NULL) {
+post_natbot_toot <- function(obs, scheduled_at = NULL, token = Sys.getenv("RTOOT_TOKEN")) {
   stopifnot(
     inherits(obs, "tbl_df"),
     identical(nrow(obs), 1L)
@@ -19,7 +19,8 @@ post_natbot_toot <- function(obs, scheduled_at = NULL) {
     ),
     scheduled_at = scheduled_at,
     visibility = "public",
-    language = "en"
+    language = "en",
+    token = token
   )
 }
 
