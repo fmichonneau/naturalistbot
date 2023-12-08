@@ -1,11 +1,23 @@
 Package: naturalistbot
-Title: What the Package Does (One Line, Title Case)
+Title: Mastodon Bot That Shares iNaturalist Observations
 Version: 0.0.0.9000
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
+    person("François", "Michonneau", , "francois.michonneau@gmail.com", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0002-9092-966X"))
+Description: Mastodon Bot that posts observations from iNaturalist.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.1
+Imports: 
+    dplyr,
+    ggmap,
+    ggplot2,
+    glue,
+    httr2,
+    purrr,
+    rlang,
+    rtoot,
+    scales,
+    tibble,
+    tools
