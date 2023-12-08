@@ -1,0 +1,28 @@
+on:
+  schedule: '30 10 * * *'
+
+name: "post naturalist_bot toot"
+
+jobs:
+  post_toot:
+    runs-on: ubuntu-latest
+    # Only restrict concurrency for non-PR jobs
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      RTOOT_TOKEN: ${{ secrets.RTOOT_TOKEN }}
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true
+
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          extra-packages: any::devtools
+
+      - name: Toot
+        run: |
+          ## ------------------------------------------------
+          devtools::load_all()
+          schedule_natbot_toots()
