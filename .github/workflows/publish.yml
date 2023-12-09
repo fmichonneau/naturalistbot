@@ -27,3 +27,4 @@ jobs:
           ## ------------------------------------------------
           devtools::load_all()
           schedule_natbot_toots()
+        shell: Rscript {0}
