@@ -1,16 +1,21 @@
 on:
   schedule:
     - cron: '30 10 * * *'
+  push:
+    branches:
+      - main
 
 name: "post naturalist_bot toot"
 
 jobs:
   post_toot:
     runs-on: ubuntu-latest
-    # Only restrict concurrency for non-PR jobs
+
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
       RTOOT_TOKEN: ${{ secrets.RTOOT_TOKEN }}
+      GGMAP_STADIAMAPS_API_KEY: ${{ secrets.GGMAP_STADIAMAPS_API_KEY }}
+
     steps:
       - uses: actions/checkout@v3
 
