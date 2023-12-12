@@ -33,3 +33,15 @@ jobs:
           devtools::load_all()
           schedule_natbot_toots()
         shell: Rscript {0}
+
+
+      ### Post actions ---------------------------------------------------------
+      - name: Ping Healthcheck when successful
+        if: ${{ success() }}
+        run: |
+          curl -fsS --retry 3 ${{ secrets.HEALTHCHECK_URL }}
+
+      - name: Ping Healthcheck when failure
+        if: ${{ failure() }}
+        run: |
+          curl -fsS --retry 3 ${{ secrets.HEALTHCHECK_URL }}/fail
