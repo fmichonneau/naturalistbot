@@ -24,6 +24,16 @@ post_natbot_toot <- function(obs, scheduled_at = NULL, token = "RTOOT_TOKEN") {
   )
 }
 
+get_post_times <- function(date = Sys.Date() + 1L) {
+  post_times <- as.POSIXlt(
+    paste(
+      date,
+      c("00:00:01", "06:00:01", "12:00:01", "18:00:01")
+    )
+  )
+  post_times
+}
+
 ##' @title Schedule the toots
 ##' @export
 ##' @importFrom purrr iwalk
@@ -36,15 +46,11 @@ schedule_natbot_toots <- function() {
   obs <- get_inat_obs(raw_obs)
 
   ## schedule post times
-  post_times <- as.POSIXlt(
-    paste(Sys.Date() + 1L,
-      c("00:00:01", "06:00:01", "12:00:01", "18:00:01")
-    )
-  )
+  post_times <- get_post_times()
   post_times <- strftime(post_times, "%Y-%m-%dT%H:%M:%S%z")
 
   ## draw random observations
-  i_obs <- sample(seq_len(nrow(obs)), length(post_times))
+  i_obs <- sample(seq_len(nrow(obs)), min(length(post_times), nrow(obs)))
 
   purrr::iwalk(
     i_obs,
