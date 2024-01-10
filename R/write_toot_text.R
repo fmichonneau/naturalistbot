@@ -74,6 +74,9 @@ write_toot_text <- function(obs) {
   res <- glue::glue_data(
     obs,
     "
+
+📅 Observed on {observed_on}
+
 👤 By: {user_login}
 
 📌 Location: {location_place_guess}
@@ -87,7 +90,7 @@ write_toot_text <- function(obs) {
 
   first_line <- glue::glue_data(
     obs,
-    " Observed on {observed_on}: {taxon_name}"
+    " {taxon_name}"
   )
 
   ## add relevant emoji for taxon in front of text
