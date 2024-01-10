@@ -3,9 +3,15 @@
 ##' @importFrom glue glue_data
 ##' @export
 write_photo_alt_text <- function(obs) {
+  common <- " "
+  if (!is.na(obs[["taxon_common"]])) {
+    common <- obs[["taxon_common"]]
+    common <- glue::glue(" ({common}) ")
+  }
+
   glue::glue_data(
     obs,
-    "Photo of {taxon_name} ({taxon_common}) by {user_login}. Attribution: {photo_attribution}"
+    "Photo of {taxon_name}", common, "by {user_login}. Attribution: {photo_attribution}."
   )
 }
 
