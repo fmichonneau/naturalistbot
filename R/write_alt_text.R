@@ -20,8 +20,13 @@ write_photo_alt_text <- function(obs) {
 ##' @importFrom glue glue_data
 ##' @export
 write_map_alt_text <- function(obs) {
+  coords <- parse_coords(obs[["location_coordinates"]])
+  coords <- paste0(
+    "(latitude: ", round(coords$lat, 2),
+    ", longitude: ", round(coords$lon, 2), ")."
+  )
   glue::glue_data(
     obs,
-    "Map of the location of the observation: {location_place_guess}"
+    "Map of the location of the observation: {location_place_guess}, {coords}"
   )
 }

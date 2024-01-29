@@ -4,7 +4,7 @@
 \alias{get_inat_obs_raw}
 \title{Get raw data from the iNaturalist API}
 \usage{
-get_inat_obs_raw(n_res = 50, observed_on = as.character(Sys.Date() - 365))
+get_inat_obs_raw(n_res = 199, observed_on = as.character(Sys.Date() - 365))
 }
 \arguments{
 \item{n_res}{number of results to return}

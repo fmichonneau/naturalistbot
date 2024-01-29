@@ -4,7 +4,7 @@
 \alias{post_natbot_toot}
 \title{Write the Toots with the iNaturalist information}
 \usage{
-post_natbot_toot(obs, scheduled_at = NULL)
+post_natbot_toot(obs, scheduled_at = NULL, token = "RTOOT_TOKEN")
 }
 \arguments{
 \item{obs}{A one-row data frame with the iNaturalist information}

@@ -1,6 +1,6 @@
 Package: naturalistbot
 Title: Mastodon Bot That Shares iNaturalist Observations
-Version: 0.0.0.9000
+Version: 0.0.1
 Authors@R: 
     person("François", "Michonneau", , "francois.michonneau@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-9092-966X"))
@@ -20,4 +20,6 @@ Imports:
     rtoot,
     scales,
     tibble,
+    tidyclust,
+    tidyr,
     tools

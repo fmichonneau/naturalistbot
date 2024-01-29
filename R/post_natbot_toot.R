@@ -50,7 +50,7 @@ schedule_natbot_toots <- function() {
   post_times <- strftime(post_times, "%Y-%m-%dT%H:%M:%S%z")
 
   ## draw random observations
-  i_obs <- sample(seq_len(nrow(obs)), min(length(post_times), nrow(obs)))
+  i_obs <- pick_obs(obs, n_obs = min(length(post_times), nrow(obs)))
 
   purrr::iwalk(
     i_obs,

@@ -12,7 +12,7 @@
 ##' @importFrom httr2 request req_url_path_append req_url_query req_perform
 ##'   resp_body_json
 ##' @export
-get_inat_obs_raw <- function(n_res = 50, observed_on = as.character(Sys.Date() - 365)) {
+get_inat_obs_raw <- function(n_res = 199, observed_on = as.character(Sys.Date() - 365)) {
   req <- httr2::request("https://api.inaturalist.org/v1/") |>
     httr2::req_url_path_append("observations") |>
     httr2::req_url_query(
