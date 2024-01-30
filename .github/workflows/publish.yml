@@ -1,15 +1,16 @@
 on:
   schedule:
     - cron: '30 10 * * *'
-  # push:
-  #   branches:
-  #     - main
+  push:
+    branches:
+      - main
 
 name: "post naturalist_bot toot"
 
 jobs:
   post_toot:
     runs-on: ubuntu-latest
+    if: ${{ github.event.schedule || contains(github.event.head_commit.message, '[post]') }}
 
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
