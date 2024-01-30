@@ -8,7 +8,7 @@
 ##' @export
 ##' @importFrom dplyr select mutate across where everything
 ##' @importFrom tidyr separate_wider_delim
-##' @importFrom tidyclust hier_clust
+##' @importFrom tidyclust hier_clust fit
 ##' @importFrom stats predict
 pick_obs <- function(obs, n_obs) {
 
@@ -19,7 +19,7 @@ pick_obs <- function(obs, n_obs) {
       .data$user_login
     ) |>
     tidyr::separate_wider_delim(
-      location_coordinates,
+      .data$location_coordinates,
       delim = ",",
       names = c("lat", "long")
     ) |>
@@ -36,7 +36,7 @@ pick_obs <- function(obs, n_obs) {
   )
 
   hc_fit <- hc_spec |>
-    fit(~ ., data = std_obs)
+    tidyclust::fit(~ ., data = std_obs)
 
   hc_preds <- hc_fit |>
     stats::predict(std_obs)
