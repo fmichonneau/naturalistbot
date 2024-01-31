@@ -1,6 +1,8 @@
 ##' @title Write the Toots with the iNaturalist information
 ##' @param obs A one-row data frame with the iNaturalist information
 ##' @param scheduled_at Specify date/time for posting the toot
+##' @param token the name of the environment variable that holds the Mastodon
+##'   token
 ##' @export
 post_natbot_toot <- function(obs, scheduled_at = NULL, token = "RTOOT_TOKEN") {
   stopifnot(
@@ -44,6 +46,9 @@ schedule_natbot_toots <- function() {
 
   ## get the data frame
   obs <- get_inat_obs(raw_obs)
+
+  ## write observations
+  write_obs_data(obs)
 
   ## schedule post times
   post_times <- get_post_times()

@@ -35,7 +35,7 @@ get_inat_obs_raw <- function(n_res = 199, observed_on = as.character(Sys.Date() 
 ##'
 ##' The tibble contains the information needed to compose the toot
 ##'
-##' @param obs  A one-row data frame with the iNaturalist information
+##' @param obs  A data frame with the iNaturalist information
 ##' @return a tibble
 ##' @importFrom purrr map_dfr
 ##' @importFrom tools file_ext
@@ -80,4 +80,25 @@ get_inat_obs <- function(obs) {
     )
   }) |>
   dplyr::filter(!.data[["spam"]], !.data[["user_spam"]], !.data[["user_suspended"]])
+}
+
+##' Write iNaturalist Observation data to CSV file
+##'
+##' @param obs The data frame returned by `get_inat_obs`
+##' @param path The path where the CSV file should be written
+##' @return the full path of the CSV file
+##' @importFrom readr write_csv
+write_obs_data <- function(obs, path = ".") {
+  filename <- paste0(
+    format(Sys.time(), "%Y%m%d-%H%M%S-"),
+    "inat-data.csv"
+  )
+  fullpath <- file.path(path, filename)
+  readr::write_csv(obs, file = fullpath)
+
+  if (!file.exists(fullpath)) {
+    stop("Error when creating the observation file", call. = FALSE)
+  }
+
+  fullpath
 }

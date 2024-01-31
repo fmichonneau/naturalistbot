@@ -35,6 +35,12 @@ jobs:
           schedule_natbot_toots()
         shell: Rscript {0}
 
+      ### Upload CSV file ------------------------------------------------------
+      - name: Upload CSV file
+        uses: actions/upload-artifact@v4
+        with:
+          name: inat-obs
+          path: "*inat-data.csv"
 
       ### Post actions ---------------------------------------------------------
       - name: Ping Healthcheck when successful

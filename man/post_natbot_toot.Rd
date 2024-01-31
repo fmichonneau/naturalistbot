@@ -10,6 +10,9 @@ post_natbot_toot(obs, scheduled_at = NULL, token = "RTOOT_TOKEN")
 \item{obs}{A one-row data frame with the iNaturalist information}
 
 \item{scheduled_at}{Specify date/time for posting the toot}
+
+\item{token}{the name of the environment variable that holds the Mastodon
+token}
 }
 \description{
 Write the Toots with the iNaturalist information

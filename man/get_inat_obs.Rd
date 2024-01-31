@@ -7,7 +7,7 @@
 get_inat_obs(obs)
 }
 \arguments{
-\item{obs}{A one-row data frame with the iNaturalist information}
+\item{obs}{A data frame with the iNaturalist information}
 }
 \value{
 a tibble

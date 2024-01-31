@@ -1,3 +1,7 @@
+# naturalistbot (0.0.3)
+
+* Write observations to CSV file and upload as GHA artifact
+
 # naturalistbot (0.0.2)
 
 * Implement fallback mechanism when clustering fails
