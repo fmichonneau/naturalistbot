@@ -1,3 +1,7 @@
+# naturalistbot (0.0.2)
+
+* Implement fallback mechanism when clustering fails
+
 # naturalistbot (0.0.1)
 
 * Use hierarchical clustering to try to get different types of observations.

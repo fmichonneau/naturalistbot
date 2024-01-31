@@ -49,8 +49,18 @@ schedule_natbot_toots <- function() {
   post_times <- get_post_times()
   post_times <- strftime(post_times, "%Y-%m-%dT%H:%M:%S%z")
 
-  ## draw random observations
-  i_obs <- pick_obs(obs, n_obs = min(length(post_times), nrow(obs)))
+  ## draw observations
+  n_obs <- min(length(post_times), nrow(obs))
+  i_obs <- tryCatch(
+    pick_obs(obs, n_obs = n_obs),
+    error = function(e) {
+      warning(
+        "clustering failed with message: ", e$message, call. = FALSE
+      )
+      message("using random selection instead")
+      sample(seq_len(nrow(obs)), n_obs)
+    }
+  )
 
   purrr::iwalk(
     i_obs,
