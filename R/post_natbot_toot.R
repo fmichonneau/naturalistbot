@@ -36,6 +36,16 @@ get_post_times <- function(date = Sys.Date() + 1L) {
   post_times
 }
 
+summary_cli_obs_info <- function(obs, post_time) {
+  msg <- paste0(
+    "* scheduled for ", post_time, ": ",
+    "https://inaturalist.org/observations/", obs[["id"]], "\n",
+    "  - ", obs[["taxon_name"]], " (", obs[["taxon_iconic_name"]], ") | ",
+    obs[["location_place_guess"]], "."
+  )
+  message(msg)
+}
+
 ##' @title Schedule the toots
 ##' @export
 ##' @importFrom purrr iwalk
@@ -69,6 +79,9 @@ schedule_natbot_toots <- function() {
 
   purrr::iwalk(
     i_obs,
-    \(i, idx) post_natbot_toot(obs[i, ], scheduled_at = post_times[idx])
+    \(i, idx) {
+      summary_cli_obs_info(obs[i, ], post_time = post_times[idx])
+      post_natbot_toot(obs[i, ], scheduled_at = post_times[idx])
+    }
   )
 }

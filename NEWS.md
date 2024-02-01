@@ -1,10 +1,14 @@
+# naturalistbot (0.0.4)
+
+* Display observation summary at the command line when preparing the posts.
+
 # naturalistbot (0.0.3)
 
-* Write observations to CSV file and upload as GHA artifact
+* Write observations to CSV file and upload as GHA artifact.
 
 # naturalistbot (0.0.2)
 
-* Implement fallback mechanism when clustering fails
+* Implement fallback mechanism when clustering fails.
 
 # naturalistbot (0.0.1)
 
@@ -14,3 +18,5 @@
 # naturalistbot (0.0.0.9000)
 
 * Initial release.
+
+
