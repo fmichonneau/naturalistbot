@@ -21,7 +21,7 @@ knitr::opts_chunk$set(
 
 `naturalistbot` shares observations from [iNaturalist](https://inaturalist.org)
 on the fediverse. You can follow
-[@naturalistbot](https://botsin.space/naturalistbot) to see the code in action.
+[@naturalistbot](https://hachyderm.io/naturalistbot) to see the code in action.
 Currently, the bot posts 4 times a day, observations that were made a year ago.
 
 The code is setup as an R package but there is no reason for you to install it.
@@ -32,3 +32,6 @@ issue](https://github.com/fmichonneau/naturalistbot/issues/new/).
 
 This bot is not affiliated to iNaturalist. If you want to support iNaturalist,
 it is a non-profit that accepts [donations](https://www.inaturalist.org/donate).
+You may also want to consider a
+[donation](https://community.hachyderm.io/docs/thank-you/) to hachyderm.io that
+hosts this account.
